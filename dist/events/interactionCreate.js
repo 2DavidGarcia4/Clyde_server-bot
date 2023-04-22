@@ -52,7 +52,7 @@ function interactionCreateEvent(int, client) {
                             const chRoom = yield ((_a = int.guild) === null || _a === void 0 ? void 0 : _a.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
                                     {
                                         id: user.id,
-                                        allow: ['ManageChannels', 'ManageMessages', 'ManageThreads']
+                                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
                                     },
                                     {
                                         id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
@@ -69,7 +69,7 @@ function interactionCreateEvent(int, client) {
                         const chRoom = yield ((_b = int.guild) === null || _b === void 0 ? void 0 : _b.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
                                 {
                                     id: user.id,
-                                    allow: ['ManageChannels', 'ManageMessages', 'ManageThreads']
+                                    allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
                                 },
                                 {
                                     id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
@@ -102,7 +102,7 @@ function interactionCreateEvent(int, client) {
                             const chRoom = yield ((_c = int.guild) === null || _c === void 0 ? void 0 : _c.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
                                     {
                                         id: user.id,
-                                        allow: ['ManageChannels', 'ManageMessages', 'ManageThreads']
+                                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
                                     },
                                     {
                                         id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
@@ -119,7 +119,7 @@ function interactionCreateEvent(int, client) {
                         const chRoom = yield ((_d = int.guild) === null || _d === void 0 ? void 0 : _d.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
                                 {
                                     id: user.id,
-                                    allow: ['ManageChannels', 'ManageMessages', 'ManageThreads']
+                                    allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
                                 },
                                 {
                                     id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
@@ -152,7 +152,7 @@ function interactionCreateEvent(int, client) {
                             const chRoom = yield ((_e = int.guild) === null || _e === void 0 ? void 0 : _e.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
                                     {
                                         id: user.id,
-                                        allow: ['ManageChannels', 'ManageMessages', 'ManageThreads']
+                                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
                                     },
                                     {
                                         id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
@@ -169,7 +169,7 @@ function interactionCreateEvent(int, client) {
                         const chRoom = yield ((_f = int.guild) === null || _f === void 0 ? void 0 : _f.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
                                 {
                                     id: user.id,
-                                    allow: ['ManageChannels', 'ManageMessages', 'ManageThreads']
+                                    allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
                                 },
                                 {
                                     id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
