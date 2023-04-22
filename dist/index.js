@@ -16,6 +16,7 @@ const interactionCreate_1 = require("./events/interactionCreate");
 const memberRemove_1 = require("./events/memberRemove");
 const messageCreate_1 = require("./events/messageCreate");
 const channelDelete_1 = require("./events/channelDelete");
+const memberAdd_1 = require("./events/memberAdd");
 const MyBot = new discord_js_1.Client({ intents: 131071 });
 MyBot.once('ready', () => {
     (0, ready_1.readyEvent)(MyBot);
@@ -28,6 +29,9 @@ MyBot.on('messageCreate', (message) => {
 });
 MyBot.on('channelDelete', (channel) => {
     (0, channelDelete_1.channelDeleteEvent)(channel, MyBot);
+});
+MyBot.on('guildMemberAdd', (member) => {
+    (0, memberAdd_1.memberAddEvent)(member);
 });
 MyBot.on('guildMemberRemove', (member) => {
     (0, memberRemove_1.memberRemoveEvent)(member, MyBot);
