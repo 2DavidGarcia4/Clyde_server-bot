@@ -13,7 +13,6 @@ exports.interactionCreateEvent = void 0;
 const discord_js_1 = require("discord.js");
 const functions_1 = require("../utils/functions");
 function interactionCreateEvent(int, client) {
-    var _a, _b, _c, _d, _e, _f;
     return __awaiter(this, void 0, void 0, function* () {
         const { user, guild } = int;
         if (int.isStringSelectMenu()) {
@@ -40,6 +39,18 @@ function interactionCreateEvent(int, client) {
             const roomsData = yield (0, functions_1.getRoomsData)(client);
             const CreteRoomEb = new discord_js_1.EmbedBuilder();
             const IARoomsCategory = '1098102445915254846';
+            const configCreate = {
+                parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
+                    {
+                        id: user.id,
+                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
+                    },
+                    {
+                        id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
+                        deny: ['ViewChannel', 'CreateInstantInvite']
+                    }
+                ]
+            };
             if (customId == 'createIARoomES') {
                 if (roomsData) {
                     const room = roomsData.find(f => f.userId == user.id);
@@ -47,43 +58,22 @@ function interactionCreateEvent(int, client) {
                         if (room.channelId) {
                             CreteRoomEb.setTitle('❌ Error').setColor('Red')
                                 .setDescription(`Ya tienes un IA Room el cual es <#${room.channelId}>, solo puesdes tener uno.`);
-                        }
-                        else {
-                            const chRoom = yield ((_a = int.guild) === null || _a === void 0 ? void 0 : _a.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
-                                    {
-                                        id: user.id,
-                                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
-                                    },
-                                    {
-                                        id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
-                                        deny: 'ViewChannel'
-                                    }
-                                ] }));
-                            room.channelId = chRoom === null || chRoom === void 0 ? void 0 : chRoom.id;
-                            (0, functions_1.updateRoomsData)(client, roomsData);
-                            CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
-                                .setDescription(`Tu IA Room se ha creado <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
+                            return yield int.reply({ ephemeral: true, embeds: [CreteRoomEb] });
                         }
                     }
+                    const chRoom = yield (guild === null || guild === void 0 ? void 0 : guild.channels.create(configCreate));
+                    if (room) {
+                        room.channelId = chRoom === null || chRoom === void 0 ? void 0 : chRoom.id;
+                    }
                     else {
-                        const chRoom = yield ((_b = int.guild) === null || _b === void 0 ? void 0 : _b.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
-                                {
-                                    id: user.id,
-                                    allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
-                                },
-                                {
-                                    id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
-                                    deny: 'ViewChannel'
-                                }
-                            ] }));
                         roomsData.push({
                             userId: user.id,
                             channelId: chRoom === null || chRoom === void 0 ? void 0 : chRoom.id
                         });
-                        (0, functions_1.updateRoomsData)(client, roomsData);
-                        CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
-                            .setDescription(`Tu IA Room se ha creado <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
                     }
+                    (0, functions_1.updateRoomsData)(client, roomsData);
+                    CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
+                        .setDescription(`Tu IA Room se ha creado <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
                 }
                 else {
                     CreteRoomEb.setTitle('❌ Error').setColor('Red')
@@ -97,43 +87,22 @@ function interactionCreateEvent(int, client) {
                         if (room.channelId) {
                             CreteRoomEb.setTitle('❌ Error').setColor('Red')
                                 .setDescription(`You already gave an IA Room which is <#${room.channelId}>, you can only have one.`);
-                        }
-                        else {
-                            const chRoom = yield ((_c = int.guild) === null || _c === void 0 ? void 0 : _c.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
-                                    {
-                                        id: user.id,
-                                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
-                                    },
-                                    {
-                                        id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
-                                        deny: 'ViewChannel'
-                                    }
-                                ] }));
-                            room.channelId = chRoom === null || chRoom === void 0 ? void 0 : chRoom.id;
-                            (0, functions_1.updateRoomsData)(client, roomsData);
-                            CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
-                                .setDescription(`Your IA Room has been created <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
+                            return yield int.reply({ ephemeral: true, embeds: [CreteRoomEb] });
                         }
                     }
+                    const chRoom = yield (guild === null || guild === void 0 ? void 0 : guild.channels.create(configCreate));
+                    if (room) {
+                        room.channelId = chRoom === null || chRoom === void 0 ? void 0 : chRoom.id;
+                    }
                     else {
-                        const chRoom = yield ((_d = int.guild) === null || _d === void 0 ? void 0 : _d.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
-                                {
-                                    id: user.id,
-                                    allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
-                                },
-                                {
-                                    id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
-                                    deny: 'ViewChannel'
-                                }
-                            ] }));
                         roomsData.push({
                             userId: user.id,
                             channelId: chRoom === null || chRoom === void 0 ? void 0 : chRoom.id
                         });
-                        (0, functions_1.updateRoomsData)(client, roomsData);
-                        CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
-                            .setDescription(`Your IA Room has been created <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
                     }
+                    (0, functions_1.updateRoomsData)(client, roomsData);
+                    CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
+                        .setDescription(`Your IA Room has been created <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
                 }
                 else {
                     CreteRoomEb.setTitle('❌ Error').setColor('Red')
@@ -148,42 +117,18 @@ function interactionCreateEvent(int, client) {
                             CreteRoomEb.setTitle('❌ Error').setColor('Red')
                                 .setDescription(`Hai già una IA Room che è <#${room.channelId}>, puoi averne solo una.`);
                         }
-                        else {
-                            const chRoom = yield ((_e = int.guild) === null || _e === void 0 ? void 0 : _e.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
-                                    {
-                                        id: user.id,
-                                        allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
-                                    },
-                                    {
-                                        id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
-                                        deny: 'ViewChannel'
-                                    }
-                                ] }));
-                            room.channelId = chRoom === null || chRoom === void 0 ? void 0 : chRoom.id;
-                            (0, functions_1.updateRoomsData)(client, roomsData);
-                            CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
-                                .setDescription(`La tua IA Room è stata creata <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
-                        }
                     }
-                    else {
-                        const chRoom = yield ((_f = int.guild) === null || _f === void 0 ? void 0 : _f.channels.create({ parent: IARoomsCategory, name: user.tag, permissionOverwrites: [
-                                {
-                                    id: user.id,
-                                    allow: ['ViewChannel', 'ManageChannels', 'ManageMessages', 'ManageThreads']
-                                },
-                                {
-                                    id: (guild === null || guild === void 0 ? void 0 : guild.id) || '',
-                                    deny: 'ViewChannel'
-                                }
-                            ] }));
+                    const chRoom = yield (guild === null || guild === void 0 ? void 0 : guild.channels.create(configCreate));
+                    if (room)
+                        room.channelId = chRoom === null || chRoom === void 0 ? void 0 : chRoom.id;
+                    else
                         roomsData.push({
                             userId: user.id,
                             channelId: chRoom === null || chRoom === void 0 ? void 0 : chRoom.id
                         });
-                        (0, functions_1.updateRoomsData)(client, roomsData);
-                        CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
-                            .setDescription(`La tua IA Room è stata creata <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
-                    }
+                    (0, functions_1.updateRoomsData)(client, roomsData);
+                    CreteRoomEb.setTitle('✅ Éxito').setColor('Green')
+                        .setDescription(`La tua IA Room è stata creata <#${chRoom === null || chRoom === void 0 ? void 0 : chRoom.id}>`);
                 }
                 else {
                     CreteRoomEb.setTitle('❌ Errore').setColor('Red')
